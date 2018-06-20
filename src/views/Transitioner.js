@@ -179,7 +179,9 @@ class Transitioner extends React.Component {
     const prevTransitionProps = this._prevTransitionProps;
     this._prevTransitionProps = null;
 
-    const scenes = this.state.scenes.filter(isSceneNotStale);
+    const scenes = this.props.staleScenes
+      ? this.state.scenes.filter(isSceneNotStale)
+      : this.state.scenes;
 
     const nextState = {
       ...this.state,
